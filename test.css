@@ -1,0 +1,37 @@
+nav {
+    display: flex;
+}
+
+ul {
+    margin: 0%;
+    padding: 0%;
+}
+
+.nav-list > li {
+    display: inline-block;
+}
+
+.options {
+    display: none;
+}
+.navigation {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.nav-list {
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 2rem;
+    width: 30em;
+}
+
+.account {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
