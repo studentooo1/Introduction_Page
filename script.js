@@ -6,7 +6,7 @@ const menu = document.querySelector('.menu_bar');
 console.log(menu)
 const hamburger = document.querySelector('.hamburger');
 const close = document.createElement('img');
-close.setAttribute('src', '../images/icon-close-menu.svg');
+close.setAttribute('src', '../Introduction_Page/images/icon-close-menu.svg');
 close.classList = 'menu-hide'
 close.style.height = '1.3rem';
 
