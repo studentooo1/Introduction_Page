@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reminders Web App</title>
+  <style>
+        html {
+      position: relative;
+      min-height: 100%;
+    }
+
+    html::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/images/image-hero-desktop.png'); /* Replace with the path to your background image */
+      background-position: center;
+      background-size: cover;
+      opacity: 0.1; /* Adjust the opacity as needed */
+      z-index: -1;
+      /* Add other styles as needed */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #reminderForm {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #reminderText {
+      width: 250px;
+      padding: 8px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .reminder-item {
+      margin-bottom: 5px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      /* background-color: rgb(238, 237, 205); */
+    }
+  </style>
+</head>
+<body>
+  <h1>Reminders Web App</h1>
+  <div id="reminders">
+    <!-- Reminder items will be dynamically added here -->
+  </div>
+  <form id="reminderForm">
+    <input type="text" id="reminderText" placeholder="Enter your reminder">
+    <button type="submit">Add Reminder</button>
+  </form>
+
+  <script>
+    // Function to display the reminders on the page
+    function displayReminders() {
+      const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+
+      const remindersDiv = document.getElementById('reminders');
+      remindersDiv.innerHTML = '';
+
+      reminders.forEach((reminder, index) => {
+        const reminderItem = document.createElement('div');
+        reminderItem.classList.add('reminder-item');
+        reminderItem.innerHTML = `
+          <span>${reminder}</span>
+          <button onclick="deleteReminder(${index})">Delete</button>
+        `;
+        remindersDiv.appendChild(reminderItem);
+      });
+    }
+
+    // Function to add a new reminder
+    function addReminder(event) {
+      event.preventDefault();
+      const reminderText = document.getElementById('reminderText').value.trim();
+
+      if (reminderText === '') return;
+
+      const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+      reminders.push(reminderText);
+      localStorage.setItem('reminders', JSON.stringify(reminders));
+
+      document.getElementById('reminderText').value = '';
+      displayReminders();
+    }
+
+    // Function to delete a reminder
+    function deleteReminder(index) {
+      const reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+      reminders.splice(index, 1);
+      localStorage.setItem('reminders', JSON.stringify(reminders));
+      displayReminders();
+    }
+
+    document.getElementById('reminderForm').addEventListener('submit', addReminder);
+    displayReminders();
+  </script>
+</body>
+</html>

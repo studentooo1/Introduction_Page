@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+
+    html::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/images/image-hero-desktop.png'); /* Replace with the path to your background image */
+      background-position: center;
+      background-size: cover;
+      opacity: 0.1; /* Adjust the opacity as needed */
+      z-index: -1;
+      /* Add other styles as needed */
+    }
+    body {
+        /* background-color: rgb(147, 79, 147); */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #container  > *{
+        padding: 1rem;
+    }
+
+    #todo-list > * {
+        width: 50%;
+        border-radius: 7px;
+        /* background-color: rgb(237, 238, 205); */
+        font-weight: 800;
+    }
+    input {
+      margin: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid black;
+    }
+
+    .done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Todo List</h1>
+  <div id="container">
+    <input type="text" id="todo-input" placeholder="Enter a new task">
+    <button id="add-button" style="color: white; background-color: black;">Add</button>
+    <ul id="todo-list">
+      <!-- The list items will be added here dynamically -->
+    </ul>
+  </div>
+  <script>
+    // Get the elements from the document
+    var todoInput = document.getElementById("todo-input");
+    var addButton = document.getElementById("add-button");
+    var todoList = document.getElementById("todo-list");
+
+    // Add a click event listener to the add button
+    addButton.addEventListener("click", function() {
+      // Get the value of the input field
+      var todo = todoInput.value;
+
+      // Check if the input is not empty
+      if (todo) {
+        // Create a new list item element
+        var li = document.createElement("li");
+
+        // Set the text content of the list item to the input value
+        li.textContent = todo;
+
+        // Add a click event listener to the list item
+        li.addEventListener("click", function() {
+          // Toggle the done class on the list item
+          li.classList.toggle("done");
+        });
+
+        // Append the list item to the todo list
+        todoList.appendChild(li);
+
+        // Clear the input field
+        todoInput.value = "";
+      }
+    });
+  </script>
+</body>
+</html>

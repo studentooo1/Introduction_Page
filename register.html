@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .register-form {
+      padding: 3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .register-button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .register-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-form">
+    <h2>Register</h2>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="register-username" placeholder="Enter your desired username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="register-password" placeholder="Enter your desired password">
+    </div>
+    <button class="register-button" onclick="register()">Register</button>
+  </div>
+
+  <script>
+    function register() {
+      const username = document.getElementById('register-username').value;
+      const password = document.getElementById('register-password').value;
+
+      // For demonstration purposes, we're simply displaying the registration details
+      // In a real-world scenario, you should handle user registration with a backend server and store the user data securely
+      alert(`Registration successful!\nUsername: ${username}\nPassword: ${password}`);
+    }
+  </script>
+</body>
+</html>
